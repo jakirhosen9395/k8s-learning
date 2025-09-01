@@ -49,13 +49,14 @@ Kubernetes-এ **Namespace** হলো cluster এর ভেতরে resource g
 
 **Namespace তৈরি (YAML দিয়ে):**
 ```yaml
+#namespace.yaml
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: development
+  name: dev-ns-0
 ```
 ```bash
-kubectl apply -f development-ns.yaml
+kubectl apply -f namespace.yaml
 ```
 
 **সব Kubernetes API resources list করো:**
@@ -77,27 +78,27 @@ kubectl get namespace --no-headers | wc -l
 
 **Namespace তৈরি:**
 ```bash
-kubectl create ns dev-ns
+kubectl create ns dev-ns-1
 ```
 
 **নির্দিষ্ট namespace এ Pod count:**
 ```bash
-kubectl get pods --namespace=dev-ns
+kubectl get pods --namespace=dev-ns-1
 ```
 
 **Namespace switch করা (kubectl context):**
 ```bash
-kubectl config set-context --current --namespace=dev-ns
+kubectl config set-context --current --namespace=dev-ns-1
 ```
 
 **Namespace এ Deployment তৈরি:**
 ```bash
-kubectl create deployment redis-deploy --image=redis --replicas=2 -n=dev-ns
+kubectl create deployment nginx-deploy --image=nginx --replicas=2 -n=dev-ns-1
 ```
 
 **নির্দিষ্ট namespace এ pod list (details সহ):**
 ```bash
-kubectl get pods -o wide -n dev-ns
+kubectl get pods -o wide -n dev-ns-1
 ```
 
 **সব namespace এর সব pod list:**
