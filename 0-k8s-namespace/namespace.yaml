@@ -1,0 +1,7 @@
+#0-k8s-namespace/namespace.yaml 
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev-ns
+
+
